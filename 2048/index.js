@@ -1,7 +1,7 @@
-var my2048, 
+var my2048,
     rows = 4, //设置游戏行数
     cols = 4, //设置游戏列数
-    squareWidth = 100, //设置方块边长
+    squareWidth = 60, //设置方块边长
     spacing = 12, //设置间隙大小
     boardSet = [], //初始面板方块集合
     squareSet = [], //带数字的小方块集合
@@ -86,7 +86,7 @@ function analysisActions(direction) {
                 }
             }
         }
-    } else if (direction == directionEnum.top) { //向前
+    } else if (direction == directionEnum.top) { //向上
         for (var j = 0; j < squareSet[0].length; j++) { //向上移动，每列之间分开来看，所以以列数来进行运算
             var temp = [];
             for (var i = 0; i < squareSet.length; i++) { //首行是第一个元素
@@ -101,10 +101,10 @@ function analysisActions(direction) {
                 }
             }
         }
-    } else { //向后
+    } else { //向下
         for (var j = 0; j < squareSet[0].length; j++) { //外层循环根据列进行循环
             var temp = [];
-            for (var i = squareSet.length - 1; i >= 0; i--) { //内存循环根据行，倒着进行压入数组
+            for (var i = squareSet.length - 1; i >= 0; i--) { //内层循环根据行，倒着进行压入数组
                 if (squareSet[i][j] != null) {
                     temp.push(squareSet[i][j]);
                 }
@@ -296,3 +296,69 @@ function init() {
 window.onload = function () {
     init();
 }
+
+//添加手机端滑动事件
+//返回角度
+function GetSlideAngle(dx, dy) {
+    return Math.atan2(dy, dx) * 180 / Math.PI;
+}
+
+//根据起点和终点返回方向 1：向上，2：向下，3：向左，4：向右,0：未滑动
+function GetSlideDirection(startX, startY, endX, endY) {
+    var dy = startY - endY;
+    var dx = endX - startX;
+    var result = 0;
+
+    //如果滑动距离太短
+    if (Math.abs(dx) < 2 && Math.abs(dy) < 2) {
+        return result;
+    }
+
+    var angle = GetSlideAngle(dx, dy);
+    if (angle >= -45 && angle < 45) {
+        result = 4;
+    } else if (angle >= 45 && angle < 135) {
+        result = 1;
+    } else if (angle >= -135 && angle < -45) {
+        result = 2;
+    } else if ((angle >= 135 && angle <= 180) || (angle >= -180 && angle < -135)) {
+        result = 3;
+    }
+
+    return result;
+}
+
+//滑动处理
+var startX, startY;
+document.addEventListener('touchstart', function (e) {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+}, false);
+document.addEventListener('touchend', function (e) {
+    var endX, endY;
+    endX = e.changedTouches[0].clientX;
+    endY = e.changedTouches[0].clientY;
+    var direction = GetSlideDirection(startX, startY, endX, endY);
+    switch (direction) {
+        case 0:
+            console.log("没滑动");
+            break;
+        case 1:
+            move(directionEnum.top);
+            console.log("向上");
+            break;
+        case 2:
+            move(directionEnum.down);
+            console.log("向下");
+            break;
+        case 3:
+            move(directionEnum.left);
+            console.log("向左");
+            break;
+        case 4:
+            move(directionEnum.right);
+            console.log("向右");
+            break;
+        default:
+    }
+}, false);

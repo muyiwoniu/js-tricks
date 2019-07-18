@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/video.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- 由于视频文件较大，不易传输，这里自行找一个视频文件 -->
+        <video class="video-elm"
+            src="http://flv3.bn.netease.com/videolib1/1808/29/BJKac868M/SD/BJKac868M-mobile.mp4"></video>
+        <div class="video-modal">
+            <div class="video-play iconfont icon-bofang1"></div>
+            <div class="video-bar">
+                <div class="range">
+                    <div class="range-bg"></div>
+                    <div class="slider"></div>
+                </div>
+                <div class="play-button-small iconfont icon-bofang">
+
+                </div>
+                <div class="time">
+                    <span id="curtime"></span>
+                    <span>/</span>
+                    <span id="total"></span>
+                </div>
+
+                <div data-stop class="vol iconfont icon-yinliang">
+                    <input type="range" max="100" min="0" value="50">
+                </div>
+                <div data-stop class="set iconfont icon-shezhi">
+                    <div class="set-container">
+                        <div data-speed="2">2倍</div>
+                        <div data-speed="1.5">1.5倍</div>
+                        <div data-speed="1.25">1.25倍</div>
+                        <div data-speed="1">1倍</div>
+                        <div data-speed="0.75">0.75倍</div>
+                        <div data-speed="0.5">0.5倍</div>
+                    </div>
+                </div>
+                <div data-stop class="full iconfont icon-quanping">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/video.js"></script>
+</body>
+
+</html>

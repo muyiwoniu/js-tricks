@@ -1,0 +1,164 @@
+@import "https://at.alicdn.com/t/font_1222085_mjyaqm44tls.css";
+
+.container{
+    position: relative;
+    width: 600px;
+    height: 450px;
+    background: #000;
+    margin: 30px auto;
+}
+
+.video-elm{
+    width: 100%;
+    display: block;
+    height: 100%;
+}
+
+.video-modal{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0,0,0,.5);
+    cursor: pointer;
+}
+
+
+.video-modal:hover .video-bar{
+    display: flex;
+}
+
+.video-modal .video-bar.hidden{
+    display: none ;
+}
+
+.video-modal.video-hidden{
+    background: transparent;
+}
+
+.video-play{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 30px;
+    width: 80px;
+    height: 80px;
+    margin: auto;
+    transition: .3s;
+    color: #fff;
+    font-size: 80px;
+}
+
+.video-play.video-hidden{
+    opacity: 0;
+    transform: scale(1.5);
+}
+
+.video-bar{
+    height: 40px;
+    background: #000;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    display: none;
+    color: #fff;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    cursor: auto;
+}
+
+.video-bar .play-button-small{
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.video-bar .time{
+    margin-left: 20px;
+    font-size: 12px;
+}
+
+.video-bar .vol{
+    font-size: 25px;
+    cursor: pointer;
+    margin-left: auto;
+    position: relative;
+    width: 26px;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.video-bar .vol:hover{
+    width: 180px;
+}
+
+
+.video-bar .set{
+    cursor: pointer;
+    margin-left: 20px;
+    font-size: 25px;
+    position: relative;
+}
+
+
+.video-bar .full{
+    cursor: pointer;
+    margin-left: 20px;
+    font-size: 25px;
+}
+
+.video-bar .set:hover .set-container{
+    display: block;
+}
+
+.video-bar .set .set-container{
+    position: absolute;
+    background: rgba(0,0,0,.5);
+    bottom: 100%;
+    display: none;
+    border-radius: 3px;
+    width: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 30px;
+    padding: 10px 0;
+    font-size: 12px;
+    text-align: center;
+    line-height: 3;
+}
+.video-bar .set .set-container .active{
+    color: rgb(255, 219, 119)
+}
+
+.range{
+    width: 100%;
+    position: absolute;
+    height: 5px;
+    background: #fff;
+    left: 0;
+    top: -5px;
+    cursor: pointer;
+}
+
+.range .range-bg{
+    height: 5px;
+    background: #59fc74;
+    width:0%;
+}
+
+.range .slider{
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #59fc74;
+    position: absolute;
+    top: -5px;
+    left: 0%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 1px 1px rgba(50, 50, 50, .5);
+}
